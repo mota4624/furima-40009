@@ -11,7 +11,7 @@
 | firstname          | string | null: false              |
 | lastname_kana      | string | null: false              |
 | firstname_kana     | string | null: false              |
-| birthdate          | string | null: false              |
+| birthdate          | date   | null: false              |
 
 
 ### Association
@@ -27,19 +27,19 @@
 | -------------- | ---------- | ------------------------------ |
 | itemname       | string     | null: false                    |
 | description    | text       | null: false                    |
-| category       | string     | null: false                    |
-| condition      | string     | null: false                    |
-| shippingfee    | string     | null: false                    |
-| shippingorigin | string     | null: false                    |
-| deliverytime   | string     | null: false                    |
-| price          | string     | null: false                    |
-| user_id        | references | null: false, foreign_key: true |
+| category       | genre_id   | null: false                    |
+| condition      | genre_id   | null: false                    |
+| shippingfee    | genre_id   | null: false                    |
+| shippingorigin | genre_id   | null: false                    |
+| deliverytime   | genre_id   | null: false                    |
+| price          | integer    | null: false                    |
+| user           | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :order
-
+- belongs_to :genre
 
 
 ## orders テーブル
@@ -70,5 +70,6 @@
 | order       | references | null: false, foreign_key: true |
 
 ### Association
+
 - belongs_to :order
 
