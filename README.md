@@ -23,17 +23,17 @@
 
 ## items テーブル
 
-|     Column     |    Type    |            Options             |
-| -------------- | ---------- | ------------------------------ |
-| itemname       | string     | null: false                    |
-| description    | text       | null: false                    |
-| category       | genre_id   | null: false                    |
-| condition      | genre_id   | null: false                    |
-| shippingfee    | genre_id   | null: false                    |
-| shippingorigin | genre_id   | null: false                    |
-| deliverytime   | genre_id   | null: false                    |
-| price          | integer    | null: false                    |
-| user           | references | null: false, foreign_key: true |
+|      Column       |    Type    |            Options             |
+| ----------------- | ---------- | ------------------------------ |
+| itemname          | string     | null: false                    |
+| description       | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| condition_id      | integer    | null: false                    |
+| shippingfee_id    | integer    | null: false                    |
+| shippingorigin_id | integer    | null: false                    |
+| deliverytime_id   | integer    | null: false                    |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
