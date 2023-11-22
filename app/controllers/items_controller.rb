@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
-before_action :authenticate_user!, only: [:new]   # ログインしてなければログイン画面へ戻す
-
+  before_action :authenticate_user!, only: [:new]   # ログインしてなければログイン画面へ戻す
 
   def index
   end
@@ -11,28 +10,17 @@ before_action :authenticate_user!, only: [:new]   # ログインしてなけれ�
 
   def create
     @item = Item.new(item_params)
-    if  @item.save
-         redirect_to root_path
-     else
-         render :new, status: :unprocessable_entity
+    if @item.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
     end
   end
- #    @prototype = Prototype.new(prototype_params)
- #    if  @prototype.save
- #        redirect_to root_path
- #    else
- #        render :new, status: :unprocessable_entity
- #    end
- 
- #    Item.create(Item_params)
- #    redirect_to '/'
-
-
 
   private
 
   def item_params
-    params.require(:item).permit(:itemname,:description,:category_id,:condition_id,:shippingfee_id,:shippingorigin_id,:deliverytime_id,:price,:image).merge(user_id: current_user.id)
+    params.require(:item).permit(:itemname, :description, :category_id, :condition_id, :shippingfee_id, :shippingorigin_id,
+                                 :deliverytime_id, :price, :image).merge(user_id: current_user.id)
   end
-
 end
