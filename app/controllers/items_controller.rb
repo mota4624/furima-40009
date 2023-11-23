@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]   # ログインしてなければログイン画面へ戻す
   before_action :set_item, only: [:show, :edit, :update]
-  
+
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
@@ -20,17 +20,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
     redirect_to root_path unless current_user == @item.user
     # redirect_to root_path unless 商品が売却済みの場合(商品購入機能実装後に記載予定)
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
