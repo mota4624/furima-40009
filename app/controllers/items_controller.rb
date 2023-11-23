@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]   # ログインしてなければログイン画面へ戻す
-
+  before_action :set_item, only: [:show, :edit, :update]
+  
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
@@ -38,6 +39,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:itemname, :description, :category_id, :condition_id, :shippingfee_id, :shippingorigin_id,
