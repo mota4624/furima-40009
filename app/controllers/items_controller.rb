@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     redirect_to root_path unless current_user == @item.user
-    #redirect_to root_path unless 商品が売却済みの場合(商品購入機能実装後に記載予定)
+    # redirect_to root_path unless 商品が売却済みの場合(商品購入機能実装後に記載予定)
   end
 
   def update
@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
 
   private
 
