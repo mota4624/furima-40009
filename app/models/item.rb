@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :condition
   belongs_to :shippingfee
-  belongs_to :shippingorigin
+  belongs_to :prefecture
   belongs_to :deliverytime
 
   # itemのバリデーション
