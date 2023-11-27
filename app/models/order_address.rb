@@ -5,11 +5,10 @@ class OrderAddress
   # バリデーションの処理
   with_options presence: true do
     validates :postalcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Enter it as follows (e.g. 123-4567)' }
-    validates :user_id, :item_id, :city, :housenumber, :token
+    validates :user_id, :item_id, :city, :housenumber, :token, :phone
   end
 
-  validates :phone, presence: true,
-                    numericality: { only_integer: true, message: 'is invalid. Input only number' }
+  validates :phone, numericality: { only_integer: true, message: 'is invalid. Input only number' }
   validate :check_phone_length
   def check_phone_length
     errors.add(:phone, 'is too short') if phone.present? && phone.length < 10

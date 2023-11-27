@@ -1,26 +1,30 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]   # ログインしてなければログイン画面へ戻す
+  before_action :set_item, only: [:index, :create]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
     root_back
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
       @order_address.save
       redirect_to root_path
     else
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index, status: :unprocessable_entity
     end
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def root_back
     redirect_to root_path if current_user == @item.user || Order.exists?(item_id: @item.id)

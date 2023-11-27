@@ -31,3 +31,4 @@ const form = document.getElementById('charge-form')
 };
 
 window.addEventListener("turbo:load", pay);
+window.addEventListener("turbo:render", pay);
