@@ -23,8 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless current_user == @item.user
-    # redirect_to root_path unless 商品が売却済みの場合(商品購入機能実装後に記載予定)
+    redirect_to root_path if current_user != @item.user || Order.exists?(item_id: @item.id)
   end
 
   def update

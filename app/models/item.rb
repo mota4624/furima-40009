@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   # itemのアソシエーション
   belongs_to :user
-  # has_one :order
+  has_one :order
   has_one_attached :image # ActiveStorage用
 
   # ActiveHash用のアソシエーション
@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :condition
   belongs_to :shippingfee
-  belongs_to :shippingorigin
+  belongs_to :prefecture
   belongs_to :deliverytime
 
   # itemのバリデーション

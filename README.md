@@ -51,7 +51,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :delivery
+- has_one :address
 
 
 
@@ -60,7 +60,7 @@
 |   Column    |    Type    |            Options             |
 | ----------- | ---------- | ------------------------------ |
 | postalcode  | string     | null: false                    |
-| prefecture  | string     | null: false                    |
+| prefecture  | integer    | null: false                    |
 | city        | string     | null: false                    |
 | housenumber | string     | null: false                    |
 | building    | string     |                                |
